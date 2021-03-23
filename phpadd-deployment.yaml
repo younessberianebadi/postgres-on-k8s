@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appadd-deployment
+  labels:
+    app: appadd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appadd
+  template:
+    metadata:
+      labels:
+        app: appadd
+    spec:
+      containers:
+      - name: appadd
+        image: younessberianebadi/addapp:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
