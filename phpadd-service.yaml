@@ -6,7 +6,10 @@ spec:
   type: LoadBalancer
   selector:
     app: appadd
+<<<<<<< HEAD
     type: local
+=======
+>>>>>>> 272868c22751a73c5ea6de0d01fb934d621ca0d1
   ports:
     - name: http
       protocol: TCP
