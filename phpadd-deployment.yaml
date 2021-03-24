@@ -1,24 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: appadd-deployment
+  labels:
+    app: appadd
+    type: local  
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: postgres
+      app: appadd
   template:
     metadata:
       labels:
-        app: postgres
+        app: appadd
     spec:
       containers:
-        - name: postgres
-          image: postgres:10.4
-          imagePullPolicy: "IfNotPresent"
-          ports:
-          - containerPort: 5432
-          env:
+      - name: appadd
+        image: hamzax01/h_php:6.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        env:
           - name: POSTGRES_DB
             valueFrom:
               secretKeyRef:
@@ -34,11 +37,8 @@ spec:
               secretKeyRef:
                 name: postgres-secret
                 key: POSTGRES_PASSWORD
-
-          volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: postgredb
-      volumes:
-        - name: postgredb
-          persistentVolumeClaim:
-            claimName: postgres-pv-claim
+          - name: URL
+            valueFrom: 
+              configMapKeyRef:
+                name: postgres-configmap
+                key: URL

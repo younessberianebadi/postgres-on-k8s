@@ -16,7 +16,29 @@ spec:
     spec:
       containers:
       - name: app
-        image: younessberianebadi/displaypgdb:1.0
+        image: hamzax01/h_php_display:1.0
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+        env:
+          - name: POSTGRES_DB
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: POSTGRES_DB
+          - name: POSTGRES_USER
+            valueFrom: 
+              secretKeyRef:
+                name: postgres-secret
+                key: POSTGRES_USER
+          - name: POSTGRES_PASSWORD
+            valueFrom: 
+              secretKeyRef:
+                name: postgres-secret
+                key: POSTGRES_PASSWORD
+          - name: URL
+            valueFrom: 
+              configMapKeyRef:
+                name: postgres-configmap
+                key: URL
+
