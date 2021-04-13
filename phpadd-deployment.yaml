@@ -4,10 +4,7 @@ metadata:
   name: appadd-deployment
   labels:
     app: appadd
-<<<<<<< HEAD
     type: local  
-=======
->>>>>>> 272868c22751a73c5ea6de0d01fb934d621ca0d1
 spec:
   replicas: 1
   selector:
@@ -20,8 +17,7 @@ spec:
     spec:
       containers:
       - name: appadd
-<<<<<<< HEAD
-        image: hamzax01/h_php:6.0
+        image: younessberianebadi/php-form:1.0
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -46,9 +42,3 @@ spec:
               configMapKeyRef:
                 name: postgres-configmap
                 key: URL
-=======
-        image: younessberianebadi/addapp:1.0
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
->>>>>>> 272868c22751a73c5ea6de0d01fb934d621ca0d1

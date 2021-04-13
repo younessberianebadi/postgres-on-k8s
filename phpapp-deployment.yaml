@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: hamzax01/h_php_display:1.0
+        image: younessberianebadi/php-database-content:1.0
         imagePullPolicy: Always
         ports:
         - containerPort: 80
